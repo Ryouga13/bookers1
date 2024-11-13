@@ -1,7 +1,13 @@
-<h1>Books</h1>
-<p>Find me in app/views/books/new.html.erb</p>
 
 <h4>New book</h4>
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
 <%= form_with model: @book, url: '/books', method: :post do |f| %>
   <h4>Title</h4>
